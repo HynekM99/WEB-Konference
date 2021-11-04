@@ -1,0 +1,94 @@
+body {
+    background: hsl(210, 100%, 90%) !important;
+    min-width: 300px;
+}
+
+article {
+    padding: 0 !important;
+    max-width: 65rem;
+}
+
+div.wrapper {
+    width: 100%;
+}
+
+.wrapper.navigation {
+    background: hsl(220, 70%, 25%);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 4px #0000004f
+}
+
+.navbar {
+    margin: auto;
+    width: 100%;
+    max-width: 65rem;
+}
+
+.nav-item a, .navbar-toggler, .navbar-nav li a {
+    color: #ffffff !important;
+    background: hsl(220, 70%, 25%);
+}
+
+.navbar-nav li a:hover {
+    background: hsl(220, 70%, 20%);
+}
+
+.navbar-nav li a {
+    padding: 0.5rem 1rem !important;
+}
+
+.selected {
+    background: hsl(220, 70%, 15%) !important;
+}
+
+.dropdown-menu, .dropdown-item {
+    background: hsl(220, 80%, 45%) !important;
+}
+
+.dropdown-item:hover {
+    background: hsl(220, 80%, 40%) !important;
+}
+
+article {
+    background: hsl(220, 100%, 80%) !important;
+}
+
+footer {
+    color: #ffffff;
+    background-color: hsl(220, 80%, 40%);
+}
+
+div.row {
+    padding: 5px;
+}
+
+div.article-preview {
+    padding-bottom: 1.5rem;
+    height: 100%;
+    background-color: hsl(0, 70%, 70%);
+    border-radius: 10px;
+    box-shadow: 0 0 4px black;
+    position: relative;
+}
+
+div.article-preview p {
+    text-align: justify;
+    padding: 0 10px;
+    margin-bottom: 0;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+div.article-preview span {
+    font-style: italic;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}

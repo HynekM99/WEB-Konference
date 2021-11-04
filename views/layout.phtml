@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="cs-cz">
+<head>
+    <base href="/localhost"/>
+    <meta charset="UTF-8"/>
+    <meta content='width=device-width' name='viewport'>
+    <title><?= $title?></title>
+    <meta name="description" content="<?= $description?>"/>
+    <meta name="keywords" content="<?= $keywords?>"/>
+
+    <link rel="stylesheet" href="/src/css/style.css">
+    <link rel="stylesheet" href="/src/node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/src/node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="/src/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/src/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</head>
+
+<body>
+    <div class="wrapper navigation">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm p-0">
+            <button 
+            class="navbar-toggler shadow-none border-0 pt-2 pb-2" 
+            type="button" 
+            data-bs-toggle="collapse" 
+            data-bs-target=".navbar-collapse" 
+            aria-controls="navbar-collapse" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation">
+                <h5 id="navbar-collapsed-text" class="m-0 pt-1 pb-1">
+                    Nabídka
+                </h5>
+            </button>
+            <button 
+            class="navbar-toggler shadow-none border-0" 
+            type="button" 
+            data-bs-toggle="collapse" 
+            data-bs-target=".navbar-collapse" 
+            aria-controls="navbar-collapse" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a id="uvod" class="nav-link" href="uvod">Úvod</a></li>
+                    <li class="nav-item"><a id="program" class="nav-link" href="program">Program konference</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <article class="container-fluid">
+        <?php $this->controller->return_view();?>
+    </article>
+
+    <footer>
+        <div class="p-2 text-center">
+            © 2021 Hynek Moudrý
+        </div>
+    </footer>
+</body>
+</html>
