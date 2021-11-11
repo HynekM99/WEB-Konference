@@ -1,0 +1,41 @@
+<div class="p-3">
+    <h3>
+        Registrace
+    </h3>
+    <div class="d-flex justify-content-center">
+        <form class="register-form" method="post">
+            <span class="text-danger" hidden>
+                Uživatel se zadaným emailem již existuje.
+            </span>
+            <table>
+                <tr>
+                    <td><label for="name">Jméno</label></td>
+                    <td><input type="text" id="name" name="name" placeholder="..." required onkeyup="checkForm()"></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Heslo</label></td>
+                    <td><input type="password" id="password" name="password" placeholder="..." required onkeyup="checkForm()"/></td>
+                </tr>
+                <tr>
+                    <td><label for="password-confirm">Potvrďte&nbsp;heslo</label></td>
+                    <td><input type="password" id="password-confirm" name="password-confirm" placeholder="..." required onkeyup="checkForm()"/></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email</label></td>
+                    <td><input type="email" id="email" name="email" placeholder="..." required onkeyup="checkForm()"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button name="submit" type="submit" class="submit"></i>Registrovat</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<script>
+    document.getElementById("uvod").classList.add("selected");
+    document.getElementById("navbar-collapsed-text").innerText = "Registrace";
+    if (window.history.replaceState) window.history.replaceState(null, null, window.location.href);
+</script>

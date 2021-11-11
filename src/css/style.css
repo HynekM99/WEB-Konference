@@ -83,6 +83,13 @@ div.row {
     transition: 300ms;
 }
 
+.submit:disabled {
+    color: hsl(0, 0%, 30%);
+    background: hsl(0, 0%, 60%);
+    text-shadow: none;
+    cursor: default;
+}
+
 div.article-preview {
     padding-bottom: 1.5rem;
     height: 100%;
@@ -121,7 +128,7 @@ div.article-preview span {
     bottom: 0;
 }
 
-form.login-form {
+form.login-form, form.register-form {
     padding: 1rem;
     width: min-content;
     background-color: hsl(70, 50%, 90%);

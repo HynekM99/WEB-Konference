@@ -34,5 +34,6 @@
 </div>
 <script>
     document.getElementById("uvod").classList.add("selected");
-    document.getElementById("navbar-collapsed-text").innerText = "Úvod";
+    document.getElementById("navbar-collapsed-text").innerText = "Login";
+    if (window.history.replaceState) window.history.replaceState(null, null, window.location.href);
 </script>
