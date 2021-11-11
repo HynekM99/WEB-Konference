@@ -1,0 +1,38 @@
+<div class="p-3">
+    <h3>
+        Přihlášení
+    </h3>
+    <div class="d-flex justify-content-center">
+        <form class="login-form" method="post">
+            <span class="text-danger" hidden>
+                Zadané jméno neexistuje nebo je zadané heslo špatné.
+            </span>
+            <table>
+                <tr>
+                    <td><label for="name-or-email">Jméno/email</label></td>
+                    <td><input type="text" id="name-or-email" name="name-or-email" placeholder="..." required></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Heslo</label></td>
+                    <td><input type="password" id="password" name="password" placeholder="..." required/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button name="submit" type="submit" class="submit"></i>Přihlásit</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <a href="registrace">Registrovat</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<script>
+    document.getElementById("uvod").classList.add("selected");
+    document.getElementById("navbar-collapsed-text").innerText = "Úvod";
+</script>
