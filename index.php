@@ -2,7 +2,7 @@
 const DB_IP_ADDRESS = "127.0.0.1";
 const DB_USER = "root";
 const DB_PASSWORD = "";
-const DB_NAME = "";
+const DB_NAME = "db_conference";
 
 mb_internal_encoding("UTF-8");
 ini_set('display_errors', 1);
@@ -20,7 +20,7 @@ function autoload_function($class)
 
 spl_autoload_register("autoload_function");
 
-//Db::connect(DB_IP_ADDRESS, DB_USER, DB_PASSWORD, DB_NAME);
+Db::connect(DB_IP_ADDRESS, DB_USER, DB_PASSWORD, DB_NAME);
 
 $router = new RouterController(array($_SERVER['REQUEST_URI']));
 $router->return_view();

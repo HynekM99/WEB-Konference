@@ -4,9 +4,11 @@
     </h3>
     <div class="d-flex justify-content-center">
         <form class="login-form" method="post">
-            <span class="text-danger" hidden>
-                Zadané jméno neexistuje nebo je zadané heslo špatné.
-            </span>
+            <?php if (isset($dataValid) && $dataValid == false) : ?>
+                <span class="d-flex justify-content-center text-danger">
+                    Zadané údaje jsou nesprávné.
+                </span>
+            <?php endif ?>
             <table>
                 <tr>
                     <td><label for="name-or-email">Jméno/email</label></td>
@@ -34,6 +36,6 @@
 </div>
 <script>
     document.getElementById("uvod").classList.add("selected");
-    document.getElementById("navbar-collapsed-text").innerText = "Login";
+    document.getElementById("navbar-collapsed-text").innerText = "Přihlášení";
     if (window.history.replaceState) window.history.replaceState(null, null, window.location.href);
 </script>

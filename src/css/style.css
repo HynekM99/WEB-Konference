@@ -60,6 +60,10 @@ footer {
     background-color: hsl(220, 80%, 40%);
 }
 
+label {
+    white-space: nowrap;
+}
+
 div.row {
     padding: 5px;
 }

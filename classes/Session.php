@@ -1,15 +1,13 @@
 <?php
-class MySession {
+session_start();
 
-    public function __construct() {
-        session_start();
-    }
+class Session {
 
-    public function setSession(string $key, $value) {
+    public static function setSession(string $key, $value) {
         $_SESSION[$key] = $value;
     }
 
-    public function isSession(string $key): bool {
+    public static function isSession(string $key): bool {
         return isset($_SESSION[$key]);
     }
 
@@ -17,12 +15,12 @@ class MySession {
      * @param string $key
      * @return mixed|null
      */
-    public function readSession(string $key) {
-        if (!$this->isSession($key)) return null;
+    public static function readSession(string $key) {
+        if (!self::isSession($key)) return null;
         return $_SESSION[$key];
     }
 
-    public function removeSession(string $key) {
+    public static function removeSession(string $key) {
         unset($_SESSION[$key]);
     }
 

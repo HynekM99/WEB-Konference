@@ -1,6 +1,6 @@
 <?php
 class RouterController extends Controller {
-    protected $controller;
+    protected Controller $controller;
 
     public function __construct($parameters) {
         if ($parameters[0] == '/') $this->redirect('uvod');
