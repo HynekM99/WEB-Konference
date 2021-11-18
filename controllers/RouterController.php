@@ -9,6 +9,7 @@ class RouterController extends Controller {
         self::KEY_ERROR => ErrorController::class,
         "uvod" => UvodController::class,
         "login" => LoginController::class,
+        "logout" => LogoutController::class,
         "registrace" => RegistraceController::class
     );
 
