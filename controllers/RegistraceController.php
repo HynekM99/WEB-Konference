@@ -1,4 +1,8 @@
 <?php
+namespace app\controllers;
+
+use app\models\UsersModel;
+
 class RegistraceController extends Controller {
     private UsersModel $usersModel;
 
@@ -6,7 +10,7 @@ class RegistraceController extends Controller {
         $this->usersModel = new UsersModel();
 
         $this->header['title'] = 'Registrace';
-        $this->header['keywords'] = 'přihlášení, registrace, jméno, heslo, email, uživatel, nový';
+        $this->header['keywords'] = 'registrace, přihlášení, uživatel, nový, jméno, heslo, email';
         $this->header['description'] = 'Registrační formulář pro uživatele';
         $this->view = 'registrace';
 

@@ -1,4 +1,9 @@
 <?php
+namespace app\controllers;
+
+use app\models\UsersModel;
+use app\utils\Login;
+
 class LoginController extends Controller {
     private UsersModel $usersModel;
 

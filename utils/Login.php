@@ -1,4 +1,6 @@
 <?php
+namespace app\utils;
+
 class Login {
     private const SESSION_KEY = "user";
     private const KEY_NAME = "name";

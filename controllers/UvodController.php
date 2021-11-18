@@ -1,4 +1,6 @@
 <?php
+namespace app\controllers;
+
 class UvodController extends Controller {
     public function __construct() {
         $this->header['title'] = 'Úvod';

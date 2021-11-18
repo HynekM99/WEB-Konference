@@ -1,4 +1,8 @@
 <?php
+namespace app\utils;
+
+use \PDO;
+
 class Db {
     private static $connection;
 

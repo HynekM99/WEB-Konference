@@ -1,4 +1,6 @@
 <?php
+namespace app\controllers;
+
 abstract class Controller 
 {
     protected $data = array();

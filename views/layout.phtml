@@ -1,3 +1,7 @@
+<?php
+use app\utils\Login;
+?>
+
 <!DOCTYPE html>
 <html lang="cs-cz">
 <head>
@@ -17,7 +21,7 @@
 
 <body>
     <div class="wrapper navigation">
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm p-0">
+        <nav class="container navbar navbar-expand-sm navbar-toggleable-sm p-0">
             <button 
             class="navbar-toggler shadow-none border-0 pt-2 pb-2" 
             type="button" 
@@ -57,7 +61,7 @@
             </div>
         </nav>
     </div>
-    <article class="container-fluid">
+    <article class="container">
         <?php $this->controller->return_view();?>
     </article>
     <footer>

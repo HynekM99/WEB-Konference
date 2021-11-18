@@ -1,4 +1,8 @@
 <?php
+namespace app\models;
+
+use app\utils\Db;
+
 class UsersModel {
     public function getUser(string $username_or_email) {
         return Db::requestRow("
