@@ -3,9 +3,8 @@ body {
     min-width: 300px;
 }
 
-article {
-    padding: 0 !important;
-    max-width: 65rem;
+i.fa {
+    line-height: inherit !important;
 }
 
 div.wrapper {
@@ -23,7 +22,6 @@ div.wrapper {
 .navbar {
     margin: auto;
     width: 100%;
-    max-width: 65rem;
 }
 
 .nav-item a, .navbar-toggler, .navbar-nav li a {
@@ -44,11 +42,12 @@ div.wrapper {
 }
 
 .dropdown-menu, .dropdown-item {
-    background: hsl(220, 80%, 45%) !important;
+    padding: 0 !important;
+    background: hsl(220, 50%, 45%) !important;
 }
 
 .dropdown-item:hover {
-    background: hsl(220, 80%, 40%) !important;
+    background: hsl(220, 50%, 40%) !important;
 }
 
 article {

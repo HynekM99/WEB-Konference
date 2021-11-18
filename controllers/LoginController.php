@@ -8,6 +8,8 @@ class LoginController extends Controller {
     private UsersModel $usersModel;
 
     public function __construct() {
+        if (Login::isLogged()) return;
+        
         $this->usersModel = new UsersModel();
 
         $this->header['title'] = 'Přihlášení';

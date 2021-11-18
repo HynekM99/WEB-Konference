@@ -2,11 +2,14 @@
 namespace app\controllers;
 
 use app\models\UsersModel;
+use app\utils\Login;
 
 class RegistraceController extends Controller {
     private UsersModel $usersModel;
 
     public function __construct() {
+        if (Login::isLogged()) return;
+
         $this->usersModel = new UsersModel();
 
         $this->header['title'] = 'Registrace';
