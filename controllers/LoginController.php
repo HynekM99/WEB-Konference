@@ -3,13 +3,12 @@ namespace app\controllers;
 
 use app\models\UsersModel;
 use app\utils\Login;
+use app\utils\VariableChecker;
 
 class LoginController extends Controller {
     private UsersModel $usersModel;
 
     public function __construct() {
-        if (Login::isLogged()) return;
-        
         $this->usersModel = new UsersModel();
 
         $this->header['title'] = 'Přihlášení';
@@ -21,7 +20,7 @@ class LoginController extends Controller {
     }
 
     private function process_data() {
-        if (!$this->postVarsSet(["submit", "name-or-email", "password"])) return;
+        if (!VariableChecker::postVarsSet(["submit", "name-or-email", "password"])) return;
 
         $name_or_email = $_POST["name-or-email"];
         $password = $_POST["password"];
@@ -39,12 +38,5 @@ class LoginController extends Controller {
 
         Login::login($user['username'], $user['id_user_rights']);
         $this->redirect("uvod");
-    }
-
-    private function postVarsSet($vars = array()) {
-        foreach ($vars as $var) {
-            if (!isset($_POST[$var])) return false;
-        }
-        return true;
     }
 }

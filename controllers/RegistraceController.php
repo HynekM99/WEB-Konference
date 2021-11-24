@@ -3,13 +3,12 @@ namespace app\controllers;
 
 use app\models\UsersModel;
 use app\utils\Login;
+use app\utils\VariableChecker;
 
 class RegistraceController extends Controller {
     private UsersModel $usersModel;
 
     public function __construct() {
-        if (Login::isLogged()) return;
-
         $this->usersModel = new UsersModel();
 
         $this->header['title'] = 'Registrace';
@@ -21,7 +20,7 @@ class RegistraceController extends Controller {
     }
 
     private function processData() {
-        if (!$this->postVarsSet(["submit", "name", "username", "password", "email"])) return;
+        if (!VariableChecker::postVarsSet(["submit", "name", "username", "password", "email"])) return;
 
         $name = $_POST["name"];
         $username = $_POST["username"];
@@ -29,12 +28,5 @@ class RegistraceController extends Controller {
         $email = $_POST["email"];
 
         $this->usersModel->registerUser($name, $username, $password, $email);
-    }
-
-    private function postVarsSet($vars = array()) {
-        foreach ($vars as $var) {
-            if (!isset($_POST[$var])) return false;
-        }
-        return true;
     }
 }
