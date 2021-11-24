@@ -2,45 +2,52 @@
     <h3>
         Registrace
     </h3>
+
     <div class="d-flex justify-content-center">
-        <form class="register-form" method="post">
-            <span class="text-danger" hidden>
-                Uživatel se zadaným emailem již existuje.
-            </span>
-            <table>
-                <tr>
-                    <td><label for="name">Celé jméno</label></td>
-                    <td><input type="text" id="name" name="name" placeholder="..." required onkeyup="checkForm()"></td>
-                </tr>
-                <tr>
-                    <td><label for="username">Uživatelské jméno</label></td>
-                    <td><input type="text" id="username" name="username" placeholder="..." required onkeyup="checkForm()"></td>
-                </tr>
-                <tr>
-                    <td><label for="password">Heslo</label></td>
-                    <td><input type="password" id="password" name="password" placeholder="..." required onkeyup="checkForm()"/></td>
-                </tr>
-                <tr>
-                    <td><label for="password-confirm">Potvrďte heslo</label></td>
-                    <td><input type="password" id="password-confirm" name="password-confirm" placeholder="..." required onkeyup="checkForm()"/></td>
-                </tr>
-                <tr hidden>
-                    <td></td>
-                    <td>
-                        Hesla se neshodují
-                    </td>
-                </tr>
-                <tr>
-                    <td><label for="email">Email</label></td>
-                    <td><input type="email" id="email" name="email" placeholder="..." required onkeyup="checkForm()"></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <button name="submit" type="submit" class="submit"></i>Registrovat</button>
-                    </td>
-                </tr>
-            </table>
+        <form class="register-form" method="post" onsubmit="return checkPasswords()">
+            <?php if (isset($dataValid) && $dataValid == false) : ?>
+                <span class="text-danger" hidden>
+                    Uživatel se zadaným emailem již existuje.
+                </span>
+            <?php endif ?>
+
+            <label for="name">Celé jméno</label>
+            <div class="d-flex justify-content-center pb-2">
+                <i class="fa fa-user-o input-sign"></i>
+                <input type="text" id="name" name="name" placeholder="..." required>
+            </div>
+
+            <label for="username">Uživatelské jméno</label>
+            <div class="d-flex justify-content-center pb-2">
+                <i class="fa fa-user input-sign"></i>
+                <input type="text" id="username" name="username" placeholder="..." required>
+            </div>
+            
+            <label for="password">Heslo</label>
+            <div class="d-flex justify-content-center pb-2">
+                <i class="fa fa-unlock-alt input-sign"></i>
+                <input type="password" id="password" name="password" placeholder="..." required>
+            </div>
+            
+            <label for="password-confirm">Potvrďte heslo</label>
+            <div class="d-flex justify-content-center pb-2">
+                <i class="fa fa-unlock-alt input-sign"></i>
+                <input type="password" id="password-confirm" name="password-confirm" placeholder="..." required>
+            </div>
+            
+            <div id="password-mismatch">
+                <span class="text-danger pb-2">Hesla se neshodují</span>
+            </div>
+            
+            <label for="email">Email</label>
+            <div class="d-flex justify-content-center pb-2">
+                <i class="fa fa-at input-sign"></i>
+                <input type="email" id="email" name="email" placeholder="..." required>
+            </div>
+            <br>
+            <div class="d-flex justify-content-center">
+                <button name="submit" type="submit" id="submit" class="submit"></i>Registrovat</button>
+            </div>
         </form>
     </div>
 </div>
@@ -48,4 +55,21 @@
     document.getElementById("uvod").classList.add("selected");
     document.getElementById("navbar-collapsed-text").innerText = "Registrace";
     if (window.history.replaceState) window.history.replaceState(null, null, window.location.href);
+
+    $("#password").keyup(checkPasswords);
+    $("#password-confirm").keyup(checkPasswords);
+    $("#password-mismatch").hide();
+
+    function checkPasswords() {
+        if ($("#password").val().length == 0 || $("#password-confirm").val().length == 0) {
+            $("#password-mismatch").hide();
+            return false;
+        }
+        if ($("#password").val() !== $("#password-confirm").val()) {
+            $("#password-mismatch").show();
+            return false;
+        }
+        $("#password-mismatch").hide();
+        return true;
+    }
 </script>

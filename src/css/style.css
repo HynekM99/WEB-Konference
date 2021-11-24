@@ -67,6 +67,16 @@ div.row {
     padding: 5px;
 }
 
+.input-sign {
+    padding: 0.25rem 0.5rem;
+    line-height: inherit;
+    width: 2rem;
+    height: 2rem;
+    background-color: hsl(0, 0%, 80%);
+    border: 1px solid hsl(0, 0%, 70%);
+    border-radius: 0.25rem 0 0 0.25rem;
+}
+
 .submit {
     color: #ffffff;
     border: none;
@@ -133,17 +143,14 @@ div.article-preview span {
 
 form.login-form, form.register-form {
     padding: 1rem;
-    width: min-content;
+    width: 400px;
+    max-width: 100%;
     background-color: hsl(70, 50%, 90%);
     box-shadow: 0 0 3px black;
     border-radius: 10px;
 }
 
-form table tbody tr {
-    height: 30px;
-}
-
-form table tbody tr td:nth-child(1) {
-    text-align: end;
-    padding: 0.5rem;
+input {
+    height: 2rem;
+    width: 100%;
 }
