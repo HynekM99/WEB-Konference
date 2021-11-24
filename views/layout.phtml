@@ -1,4 +1,6 @@
 <?php
+
+use app\models\UserRolesModel;
 use app\utils\Login;
 ?>
 
@@ -50,6 +52,7 @@ use app\utils\Login;
                     <li class="nav-item"><a id="program" class="nav-link" href="program">Program konference</a></li>
                 </ul>
                 <ul class="navbar-nav">
+
                 <?php if (Login::isLogged()) : ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -58,14 +61,19 @@ use app\utils\Login;
                             <span><?= Login::getUserName()?></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="uzivatele">Správa uživatelů</a></li>
-                            <li><hr class="dropdown-divider"></li>
+
+                            <?php if (Login::getUserRole() == UserRolesModel::ROLE_SUPER || Login::getUserRole() == UserRolesModel::ROLE_ADMIN) : ?>
+                                <li><a class="dropdown-item" href="uzivatele">Správa uživatelů</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                            <?php endif ?>
+                            
                             <li><a class="dropdown-item" href="logout">Odhlásit</a></li>
                         </ul>
                     </li>
                 <?php else : ?>
                     <li class="nav-item"><a id="login" class="nav-link" href="login">Přihlásit</a></li>
                 <?php endif ?>
+                
                 </ul>
             </div>
         </nav>

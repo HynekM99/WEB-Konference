@@ -6,7 +6,7 @@ class Login {
     private const KEY_NAME = "name";
     private const KEY_ROLE = "role";
 
-    public static function login(string $name, string $role) {
+    public static function login(string $name, int $role) {
         $info = [self::KEY_NAME => $name, self::KEY_ROLE => $role];
         Session::setSession(self::SESSION_KEY, $info);
     }
