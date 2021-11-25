@@ -1,10 +1,27 @@
 <div class="p-3">
-    <h3>
-        Správa uživatelů
-    </h3>
-
-    <div class="d-flex justify-content-center">
-        
+    <h3>Správa uživatelů</h3>
+    <div class="overflow-auto">
+        <table class="user-management-table">
+            <thead>
+                <th>Jméno</th>
+                <th>Login</th>
+                <th>Role</th>
+                <th>Akce</th>
+            </thead>
+            <?php foreach ($users as $user) : ?>
+                <tr>
+                    <td><?=$user['full_name']?></td>
+                    <td><?=$user['username']?></td>
+                    <td><?=$user['id_user_rights']?></td>
+                    <td>
+                        <div class="d-flex justify-content-center w-100">
+                            <a class="button edit" href="/uzivatele/edit?id=<?= $user['id']?>"><i class="fa fa-edit"></i></a>
+                            <a class="button delete" href="/uzivatele/delete?id=<?= $user['id']?>"><i class="fa fa-trash-o"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            <?php endforeach ?>
+        </table>
     </div>
 </div>
 <script>

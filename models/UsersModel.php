@@ -13,6 +13,12 @@ class UsersModel {
         ", array($username_or_email, $username_or_email));
     }
 
+    public function getUsers() {
+        return Db::requestAll("
+            SELECT * FROM users
+        ");
+    }
+
     public function registerUser(string $name, string $username, string $password, string $email) {
         return Db::request("
             INSERT INTO users
