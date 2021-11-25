@@ -1,6 +1,7 @@
 <?php
 namespace app\controllers;
 
+use app\models\UserRolesModel;
 use app\utils\Login;
 
 class RouterController extends Controller {
@@ -20,6 +21,12 @@ class RouterController extends Controller {
         $this->data['keywords'] = $this->controller->header['keywords'];
 
         $this->view = 'layout';
+
+        $this->data['logged_in'] = Login::isLogged();
+        $this->data['username'] = Login::getUserName();
+        $this->data['user_role'] = Login::getUserRole();
+        $this->data['is_super'] = Login::getUserRole() == UserRolesModel::ROLE_SUPER;
+        $this->data['is_admin'] = Login::getUserRole() == UserRolesModel::ROLE_ADMIN;
     }
 
     private function findPage($url) {

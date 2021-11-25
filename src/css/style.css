@@ -198,10 +198,25 @@ a.button.edit:hover {
     background-color: hsl(90, 100%, 20%);
 }
 
-a.button.delete {
+a.button.ban {
     background-color: hsl(0, 80%, 45%);
 }
 
-a.button.delete:hover {
+a.button.ban:hover {
     background-color: hsl(0, 90%, 40%);
+}
+
+i.user-enabled, i.user-disabled {
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+}
+
+i.user-enabled {
+    color: hsl(100, 100%, 30%);
+    background-color: hsl(100, 70%, 60%);
+}
+
+i.user-disabled {
+    color: hsl(0, 100%, 50%);
+    background-color: hsl(0, 70%, 80%);
 }

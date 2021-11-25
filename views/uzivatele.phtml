@@ -3,6 +3,7 @@
     <div class="overflow-auto">
         <table class="user-management-table">
             <thead>
+                <th>Povolen</th>
                 <th>Jméno</th>
                 <th>Login</th>
                 <th>Role</th>
@@ -10,13 +11,22 @@
             </thead>
             <?php foreach ($users as $user) : ?>
                 <tr>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            <?php if ($user['banned']) : ?>
+                                <i class="fa fa-times-circle user-disabled"></i>
+                            <?php else : ?>
+                                <i class="fa fa-check-circle user-enabled"></i>
+                            <?php endif ?>
+                        </div>
+                    </td>
                     <td><?=$user['full_name']?></td>
                     <td><?=$user['username']?></td>
-                    <td><?=$user['id_user_rights']?></td>
+                    <td><?=$user['name']?></td>
                     <td>
-                        <div class="d-flex justify-content-center w-100">
+                        <div class="d-flex justify-content-center">
                             <a class="button edit" href="/uzivatele/edit?id=<?= $user['id']?>"><i class="fa fa-edit"></i></a>
-                            <a class="button delete" href="/uzivatele/delete?id=<?= $user['id']?>"><i class="fa fa-trash-o"></i></a>
+                            <a class="button ban" href="/uzivatele/ban?id=<?= $user['id']?>"><i class="fa fa-times-circle"></i></a>
                         </div>
                     </td>
                 </tr>

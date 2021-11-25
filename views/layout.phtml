@@ -1,9 +1,3 @@
-<?php
-
-use app\models\UserRolesModel;
-use app\utils\Login;
-?>
-
 <!DOCTYPE html>
 <html lang="cs-cz">
 <head>
@@ -53,16 +47,16 @@ use app\utils\Login;
                 </ul>
                 <ul class="navbar-nav">
 
-                <?php if (Login::isLogged()) : ?>
+                <?php if ($logged_in) : ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <?= Login::getUserRole()?>
+                            <?= $user_role?>
                             <i class="fa fa-user pe-1"></i>
-                            <span><?= Login::getUserName()?></span>
+                            <span><?= $username?></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                            <?php if (Login::getUserRole() == UserRolesModel::ROLE_SUPER || Login::getUserRole() == UserRolesModel::ROLE_ADMIN) : ?>
+                            <?php if ($is_super || $is_admin) : ?>
                                 <li><a class="dropdown-item" href="uzivatele">Správa uživatelů</a></li>
                                 <li><hr class="dropdown-divider"></li>
                             <?php endif ?>

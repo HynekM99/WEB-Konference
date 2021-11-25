@@ -6,16 +6,18 @@ use app\utils\Db;
 class UsersModel {
     public function getUser(string $username_or_email) {
         return Db::requestRow("
-            SELECT * FROM users
+            SELECT users.*, user_rights.name FROM users
+            INNER JOIN user_rights ON users.id_user_rights = user_rights.id
             WHERE
-            username = ?
-            OR email = ?
+            users.username = ?
+            OR users.email = ?
         ", array($username_or_email, $username_or_email));
     }
 
     public function getUsers() {
         return Db::requestAll("
-            SELECT * FROM users
+            SELECT users.*, user_rights.name FROM users
+            INNER JOIN user_rights ON users.id_user_rights = user_rights.id
         ");
     }
 
