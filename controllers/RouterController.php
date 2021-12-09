@@ -23,6 +23,9 @@ class RouterController extends Controller {
         $this->view = 'layout';
 
         $this->data['logged_in'] = Login::isLogged();
+        
+        if (!Login::isLogged()) return;
+
         $this->data['username'] = Login::getUserName();
         $this->data['user_role'] = Login::getUserRole();
         $this->data['is_super'] = Login::getUserRole() == UserRolesModel::ROLE_SUPER;

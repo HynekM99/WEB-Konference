@@ -36,7 +36,7 @@ class LoginController extends Controller {
 
         $this->data['dataValid'] = true;
 
-        Login::login($user['username'], $user['id_user_rights']);
+        Login::login($user['username'], $user['id_user_rights'], $user['weight']);
         $this->redirect("uvod");
     }
 }

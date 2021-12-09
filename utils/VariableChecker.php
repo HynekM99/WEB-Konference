@@ -15,4 +15,11 @@ class VariableChecker {
         }
         return true;
     }
+
+    public static function requestVarsSet($vars = array()) {
+        foreach ($vars as $var) {
+            if (!isset($_REQUEST[$var])) return false;
+        }
+        return true;
+    }
 }

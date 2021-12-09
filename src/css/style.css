@@ -198,25 +198,31 @@ a.button.edit:hover {
     background-color: hsl(90, 100%, 20%);
 }
 
-a.button.ban {
-    background-color: hsl(0, 80%, 45%);
-}
-
-a.button.ban:hover {
-    background-color: hsl(0, 90%, 40%);
-}
-
-i.user-enabled, i.user-disabled {
+.user-enabled, .user-disabled {
+    border: none;
     padding: 0.25rem 0.5rem;
     border-radius: 6px;
+    transition: 300ms;
 }
 
-i.user-enabled {
+.user-enabled {
     color: hsl(100, 100%, 30%);
     background-color: hsl(100, 70%, 60%);
 }
 
-i.user-disabled {
+button.user-enabled:hover {
+    color: hsl(0, 100%, 45%);
+    background-color: hsl(0, 70%, 70%);
+    transition: 300ms;
+}
+
+.user-disabled {
     color: hsl(0, 100%, 50%);
     background-color: hsl(0, 70%, 80%);
+}
+
+button.user-disabled:hover {
+    color: hsl(100, 100%, 25%);
+    background-color: hsl(100, 70%, 50%);
+    transition: 300ms;
 }
