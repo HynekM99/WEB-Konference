@@ -5,8 +5,13 @@
 
     <div class="d-flex justify-content-center">
         <form class="register-form" method="post" onsubmit="return checkPasswords()">
-            <?php if (isset($dataValid) && $dataValid == false) : ?>
-                <span class="text-danger" hidden>
+            <?php if (isset($usernameExists) && $usernameExists == true) : ?>
+                <span class="text-danger">
+                    Uživatel se zadaným uživatelským jménem již existuje.
+                </span>
+            <?php endif ?>
+            <?php if (isset($emailExists) && $emailExists == true) : ?>
+                <span class="text-danger">
                     Uživatel se zadaným emailem již existuje.
                 </span>
             <?php endif ?>

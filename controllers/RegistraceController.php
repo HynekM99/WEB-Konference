@@ -27,6 +27,22 @@ class RegistraceController extends Controller {
         $password = $_POST["password"];
         $email = $_POST["email"];
 
+        $usernameExists = $this->usersModel->getUserByUsernameOrEmail($username);
+        $emailExists = $this->usersModel->getUserByUsernameOrEmail($email);
+
+        if ($usernameExists) {
+            $this->data['usernameExists'] = true;
+            return;
+        }
+        if ($emailExists) {
+            $this->data['emailExists'] = true;
+            return;
+        }
+
         $this->usersModel->registerUser($name, $username, $password, $email);
+
+        $user = $this->usersModel->getUserByUsernameOrEmail($email);
+        Login::login($user['username'], $user['id_user_rights'], $user['weight']);
+        $this->redirect("uvod");
     }
 }

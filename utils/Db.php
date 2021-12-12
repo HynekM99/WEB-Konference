@@ -14,7 +14,7 @@ class Db {
 
     public static function connect($host, $uzivatel, $heslo, $databaze) {
         if (!isset(self::$connection)) {
-            self::$connection = @new PDO(
+            self::$connection = new PDO(
                 "mysql:host=$host;dbname=$databaze",
                 $uzivatel,
                 $heslo,

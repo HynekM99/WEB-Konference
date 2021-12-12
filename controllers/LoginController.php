@@ -25,7 +25,7 @@ class LoginController extends Controller {
         $name_or_email = $_POST["name-or-email"];
         $password = $_POST["password"];
 
-        $user = $this->usersModel->getUser($name_or_email);
+        $user = $this->usersModel->getUserByUsernameOrEmail($name_or_email);
 
         $this->data['dataValid'] = false;
 

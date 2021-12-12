@@ -4,7 +4,7 @@ namespace app\models;
 use app\utils\Db;
 
 class UsersModel {
-    public function getUser(string $username_or_email) {
+    public function getUserByUsernameOrEmail(string $username_or_email) {
         return Db::requestRow("
             SELECT users.*, user_rights.name, user_rights.weight FROM users
             INNER JOIN user_rights ON users.id_user_rights = user_rights.id
