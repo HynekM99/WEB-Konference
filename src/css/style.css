@@ -180,14 +180,23 @@ a.button {
     padding: 0.25rem 0.5rem;
     margin: 0 0.25rem;
     box-shadow: 0 0 3px black;
-    color: black;
     border-radius: 6px;
+    cursor: pointer;
     transition: 300ms;
 }
 
 a.button:hover {
-    color: black;
     transition: 300ms;
+}
+
+a.button.new-article {
+    text-decoration: none;
+    color: white;
+    background-color: hsl(90, 100%, 30%);
+}
+
+a.button.new-article:hover {
+    background-color: hsl(90, 100%, 25%);
 }
 
 a.button.edit {

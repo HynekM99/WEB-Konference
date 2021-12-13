@@ -21,8 +21,10 @@ class UzivateleController extends Controller {
 
     private function processData() {
         $users = $this->usersModel->getUsers();
+        $logged_user = $this->usersModel->getUserByID(Login::getUserID());
+
         $this->data['users'] = $users;
-        $this->data['logged_weight'] = Login::getUserWeight();
-        $this->data['is_super'] = Login::getUserRole() == UserRolesModel::ROLE_SUPER;
+        $this->data['logged_weight'] = $logged_user['weight'];
+        $this->data['is_super'] = $logged_user['id_role'] == UserRolesModel::ROLE_SUPER;
     }
 }

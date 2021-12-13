@@ -6,7 +6,7 @@ use app\utils\Db;
 class UsersModel {
     public function getUserByUsernameOrEmail(string $username_or_email) {
         return Db::requestRow("
-            SELECT users.*, user_rights.name, user_rights.weight FROM users
+            SELECT users.*, user_rights.id AS id_role, user_rights.name AS role_name, user_rights.weight FROM users
             INNER JOIN user_rights ON users.id_user_rights = user_rights.id
             WHERE
             users.username = ?
@@ -16,7 +16,7 @@ class UsersModel {
 
     public function getUserByID(int $id) {
         return Db::requestRow("
-            SELECT users.*, user_rights.name, user_rights.weight FROM users
+            SELECT users.*, user_rights.id AS id_role, user_rights.name AS role_name, user_rights.weight FROM users
             INNER JOIN user_rights ON users.id_user_rights = user_rights.id
             WHERE users.id = ?
         ", array($id));

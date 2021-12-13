@@ -2,14 +2,16 @@
 namespace app\controllers;
 
 use app\models\UserRolesModel;
+use app\models\UsersModel;
 use app\utils\Login;
 
 class RouterController extends Controller {
-
+    private UsersModel $usersModel;
     protected Controller $controller;
 
     public function __construct($parameters) {
         if ($parameters[0] == '/') $this->redirect('uvod');
+        $this->usersModel = new UsersModel();
 
         $page = $this->findPage($parameters[0]);
         $controllerClass = RouterSettings::PAGES[$page][RouterSettings::KEY_CONTROLLER];
@@ -25,11 +27,12 @@ class RouterController extends Controller {
         $this->data['logged_in'] = Login::isLogged();
         
         if (!Login::isLogged()) return;
-
-        $this->data['username'] = Login::getUserName();
-        $this->data['user_role'] = Login::getUserRole();
-        $this->data['is_super'] = Login::getUserRole() == UserRolesModel::ROLE_SUPER;
-        $this->data['is_admin'] = Login::getUserRole() == UserRolesModel::ROLE_ADMIN;
+        
+        $logged_user = $this->usersModel->getUserByID(Login::getUserID());
+        $this->data['username'] = $logged_user['username'];
+        $this->data['user_role'] = $logged_user['role_name'];
+        $this->data['is_super'] = $logged_user['id_role'] == UserRolesModel::ROLE_SUPER;
+        $this->data['is_admin'] = $logged_user['id_role'] == UserRolesModel::ROLE_ADMIN;
     }
 
     private function findPage($url) {
@@ -56,7 +59,7 @@ class RouterController extends Controller {
             return $page;
         }
 
-        if (!in_array(Login::getUserRole(), $page_info[RouterSettings::KEY_RESTRICTED_USERS])) {
+        if (!in_array($this->usersModel->getUserByID(Login::getUserID())['id_role'], $page_info[RouterSettings::KEY_RESTRICTED_USERS])) {
             return $page;
         }
 

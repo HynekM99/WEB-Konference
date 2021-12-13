@@ -3,15 +3,11 @@ namespace app\utils;
 
 class Login {
     private const SESSION_KEY = "user";
-    private const KEY_NAME = "name";
-    private const KEY_ROLE = "role";
-    private const KEY_WEIGHT = "weight";
+    private const KEY_ID = "id";
 
-    public static function login(string $name, int $role, int $weight) {
+    public static function login(int $id) {
         $info = [
-            self::KEY_NAME => $name,
-            self::KEY_ROLE => $role,
-            self::KEY_WEIGHT => $weight
+            self::KEY_ID => $id
         ];
         Session::setSession(self::SESSION_KEY, $info);
     }
@@ -24,18 +20,8 @@ class Login {
         Session::removeSession(self::SESSION_KEY);
     }
 
-    public static function getUserWeight() {
+    public static function getUserID() {
         $info = Session::readSession(self::SESSION_KEY);
-        return $info[self::KEY_WEIGHT];
-    }
-
-    public static function getUserRole() {
-        $info = Session::readSession(self::SESSION_KEY);
-        return $info[self::KEY_ROLE];
-    }
-
-    public static function getUserName() {
-        $info = Session::readSession(self::SESSION_KEY);
-        return $info[self::KEY_NAME];
+        return $info[self::KEY_ID];
     }
 }
