@@ -26,14 +26,14 @@ class UsersModel {
         return Db::requestValue("
             SELECT banned FROM users
             WHERE id = ?
-        ", array($id));
+        ", "banned", array($id));
     }
 
     public function getUserRole(int $id) {
         return Db::requestValue("
             SELECT role FROM users
             WHERE id = ?
-        ", array($id));
+        ", "role", array($id));
     }
 
     public function getUsers() {

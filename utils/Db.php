@@ -35,9 +35,9 @@ class Db {
         return $data->fetchAll(PDO::FETCH_ASSOC);
     }
     
-    public static function requestValue($request, $parameters = array()) {
+    public static function requestValue($request, $key, $parameters = array()) {
         $data = self::requestRow($request, $parameters);
-        return $data[0];
+        return $data[$key];
     }
 
     public static function request($request, $parameters = array()) {
