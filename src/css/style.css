@@ -199,12 +199,18 @@ a.button.new-article:hover {
     background-color: hsl(90, 100%, 25%);
 }
 
-a.button.edit {
-    background-color: hsl(90, 100%, 25%);
+a.button.edit-article {
+    display: inline-block;
+    text-decoration: none;
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0 0 0 6px;
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(200, 100%, 30%);
 }
 
-a.button.edit:hover {
-    background-color: hsl(90, 100%, 20%);
+a.button.edit-article:hover {
+    background-color: hsl(200, 100%, 20%);
 }
 
 .user-enabled, .user-disabled {
@@ -234,4 +240,35 @@ button.user-disabled:hover {
     color: hsl(100, 100%, 25%);
     background-color: hsl(100, 70%, 50%);
     transition: 300ms;
+}
+
+div.article {
+    background-color: hsl(200, 0%, 90%);
+    border-radius: 6px;
+    box-shadow: 0 0 3px black;
+}
+
+.article-header {
+    color: white;
+    background-color: hsl(300, 80%, 30%);
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px 6px 0 0;
+}
+
+.article-content {
+    padding: 0.5rem;
+    margin: 0;
+}
+
+.article-timestamp {
+    display: flex;
+    justify-content: end;
+    font-size: 0.75rem;
+    color: hsl(0, 0%, 30%);
+    margin-right: 0.25rem;
+}
+
+.article-controls {
+    background-color: hsl(0, 0%, 80%);
+    border-radius: 0 0 6px 6px;
 }

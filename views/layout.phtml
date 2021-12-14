@@ -44,7 +44,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a id="uvod" class="nav-link" href="uvod">Úvod</a></li>
                     <li class="nav-item"><a id="program" class="nav-link" href="program">Program konference</a></li>
-                    <li class="nav-item"><a id="uvod" class="nav-link" href="prispevky">Příspěvky</a></li>
+                    <li class="nav-item"><a id="clanky" class="nav-link" href="clanky">Články</a></li>
                 </ul>
                 <ul class="navbar-nav">
                 <?php if ($logged_in) : ?>
@@ -54,12 +54,16 @@
                             <span><?= $username?></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-
-                            <?php if ($is_super || $is_admin) : ?>
+                            <?php if ($is_author) : ?>
+                                <li><a class="dropdown-item" href="moje-clanky">Moje články</a></li>
+                            <?php elseif ($is_reviewer) : ?>
+                                <li><a class="dropdown-item" href="moje-recenze">Moje recenze</a></li>
+                            <?php elseif ($is_super || $is_admin) : ?>
+                                <li><a class="dropdown-item" href="sprava-clanku">Správa článků</a></li>
                                 <li><a class="dropdown-item" href="uzivatele">Správa uživatelů</a></li>
-                                <li><hr class="dropdown-divider"></li>
                             <?php endif ?>
                             
+                            <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="logout">Odhlásit</a></li>
                         </ul>
                     </li>

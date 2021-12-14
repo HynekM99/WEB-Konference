@@ -1,0 +1,36 @@
+<div class="p-2">
+    <h3>
+        Vlastní články
+    </h3>
+    <?php if ($can_add_article) : ?>
+        <div class="d-flex justify-content-center pb-3 mb-2 border-bottom border-dark">
+            <a class="button new-article" href="moje-clanky/pridat"><i class="fa fa-plus pe-1"></i>Nový</a>
+        </div>
+    <?php endif ?>
+
+    <?php if (!isset($articles)) : ?>
+        <h3 class="d-flex justify-content-center">Žádné články</h3>
+    <?php else : ?>
+        <?php foreach ($articles as $article) : ?>
+            <div class="article">
+                <div class="article-header">
+                    <em><?=$article['authors']?></em>
+                    <h4><?=$article['name']?></h4>
+                </div>
+                <p class="article-content"><?=$article['abstract']?></p>
+                <em class="article-timestamp"><?=$article['timestamp']?></em>
+                <div class="article-controls">
+                    <a class="button edit-article" href=""><i class="fa fa-pencil"></i> Upravit</a><br>
+                </div>
+            </div>
+        <?php endforeach ?>
+    <?php endif ?>
+    <div class="row">
+        <div class="">
+
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById("navbar-collapsed-text").innerText = "Moje články";
+</script>

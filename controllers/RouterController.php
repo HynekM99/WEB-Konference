@@ -31,8 +31,10 @@ class RouterController extends Controller {
         $logged_user = $this->usersModel->getUserByID(Login::getUserID());
         $this->data['username'] = $logged_user['username'];
         $this->data['user_role'] = $logged_user['role_name'];
-        $this->data['is_super'] = $logged_user['id_role'] == UserRolesModel::ROLE_SUPER;
+        $this->data['is_author'] = $logged_user['id_role'] == UserRolesModel::ROLE_AUTHOR;
+        $this->data['is_reviewer'] = $logged_user['id_role'] == UserRolesModel::ROLE_REVIEWER;
         $this->data['is_admin'] = $logged_user['id_role'] == UserRolesModel::ROLE_ADMIN;
+        $this->data['is_super'] = $logged_user['id_role'] == UserRolesModel::ROLE_SUPER;
     }
 
     private function findPage($url) {

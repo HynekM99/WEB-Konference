@@ -40,10 +40,25 @@ class RouterSettings {
             self::KEY_LOGIN_REQUIRED => true,
             self::KEY_RESTRICTED_USERS => [UserRolesModel::ROLE_AUTHOR, UserRolesModel::ROLE_REVIEWER]
         ),
-        "prispevky" => array(
-            self::KEY_CONTROLLER => PrispevkyController::class,
+        "clanky" => array(
+            self::KEY_CONTROLLER => ClankyController::class,
             self::KEY_LOGIN_REQUIRED => false,
             self::KEY_DISABLE_ON_LOGIN => false
+        ),
+        "moje-clanky" => array(
+            self::KEY_CONTROLLER => AutorClankyController::class,
+            self::KEY_LOGIN_REQUIRED => true,
+            self::KEY_RESTRICTED_USERS => [UserRolesModel::ROLE_REVIEWER, UserRolesModel::ROLE_ADMIN, UserRolesModel::ROLE_SUPER]
+        ),
+        "moje-clanky/pridat" => array(
+            self::KEY_CONTROLLER => NovyClanekController::class,
+            self::KEY_LOGIN_REQUIRED => true,
+            self::KEY_RESTRICTED_USERS => [UserRolesModel::ROLE_REVIEWER, UserRolesModel::ROLE_ADMIN, UserRolesModel::ROLE_SUPER]
+        ),
+        "moje-recenze" => array(
+            self::KEY_CONTROLLER => RenzentClankyController::class,
+            self::KEY_LOGIN_REQUIRED => true,
+            self::KEY_RESTRICTED_USERS => [UserRolesModel::ROLE_AUTHOR, UserRolesModel::ROLE_ADMIN, UserRolesModel::ROLE_SUPER]
         )
     );
 }

@@ -26,13 +26,13 @@ class Db {
     public static function requestRow($request, $parameters = array()) {
         $data = self::$connection->prepare($request);
         $data->execute($parameters);
-        return $data->fetch();
+        return $data->fetch(PDO::FETCH_ASSOC);
     }
 
     public static function requestAll($request, $parameters = array()) {
         $data = self::$connection->prepare($request);
         $data->execute($parameters);
-        return $data->fetchAll();
+        return $data->fetchAll(PDO::FETCH_ASSOC);
     }
     
     public static function requestValue($request, $parameters = array()) {
