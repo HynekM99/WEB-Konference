@@ -2,8 +2,8 @@
     <h3>
         Vlastní články
     </h3>
-    <?php if ($can_add_article) : ?>
-        <div class="d-flex justify-content-center pb-3 mb-2 border-bottom border-dark">
+    <?php if (!$is_banned) : ?>
+        <div class="pb-2 mb-2 border-bottom border-dark">
             <a class="button new-article" href="moje-clanky/pridat"><i class="fa fa-plus pe-1"></i>Nový</a>
         </div>
     <?php endif ?>
@@ -19,17 +19,14 @@
                 </div>
                 <p class="article-content"><?=$article['abstract']?></p>
                 <em class="article-timestamp"><?=$article['timestamp']?></em>
-                <div class="article-controls">
-                    <a class="button edit-article" href=""><i class="fa fa-pencil"></i> Upravit</a><br>
-                </div>
+                <?php if (!$is_banned) : ?>
+                    <div class="article-controls">
+                        <a class="button edit-article" href="moje-clanky/edit?id=<?=$article['id']?>"><i class="fa fa-pencil"></i> Upravit</a><br>
+                    </div>
+                <?php endif ?>
             </div>
         <?php endforeach ?>
     <?php endif ?>
-    <div class="row">
-        <div class="">
-
-        </div>
-    </div>
 </div>
 <script>
     document.getElementById("navbar-collapsed-text").innerText = "Moje články";

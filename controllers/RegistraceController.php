@@ -42,7 +42,7 @@ class RegistraceController extends Controller {
         $this->usersModel->registerUser($name, $username, $password, $email);
 
         $user = $this->usersModel->getUserByUsernameOrEmail($email);
-        Login::login($user['username'], $user['id_user_rights'], $user['weight']);
+        Login::login($user['id']);
         $this->redirect("uvod");
     }
 }

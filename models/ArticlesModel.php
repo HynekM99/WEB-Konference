@@ -4,6 +4,13 @@ namespace app\models;
 use app\utils\Db;
 
 class ArticlesModel {
+    public function getArticle(int $id) {
+        return Db::requestRow("
+            SELECT * FROM articles
+            WHERE id = ?
+        ", array($id));
+    }
+
     public function getUserArticles(int $author_id) {
         return Db::requestAll("
             SELECT articles.*, articles_authors.id_article, articles_authors.id_author FROM articles

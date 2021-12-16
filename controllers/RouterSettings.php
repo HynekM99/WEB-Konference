@@ -56,7 +56,7 @@ class RouterSettings {
             self::KEY_RESTRICTED_USERS => [UserRolesModel::ROLE_REVIEWER, UserRolesModel::ROLE_ADMIN, UserRolesModel::ROLE_SUPER]
         ),
         "moje-recenze" => array(
-            self::KEY_CONTROLLER => RenzentClankyController::class,
+            self::KEY_CONTROLLER => RecenzentClankyController::class,
             self::KEY_LOGIN_REQUIRED => true,
             self::KEY_RESTRICTED_USERS => [UserRolesModel::ROLE_AUTHOR, UserRolesModel::ROLE_ADMIN, UserRolesModel::ROLE_SUPER]
         )

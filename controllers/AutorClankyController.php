@@ -24,7 +24,7 @@ class AutorClankyController extends Controller {
     private function processData() {
         $userId = Login::getUserID();
         $loggedUser = $this->usersModel->getUserByID($userId);
-        $this->data['can_add_article'] = !$loggedUser['banned'];
+        $this->data['is_banned'] = $loggedUser['banned'];
 
         $articles = $this->articlesModel->getUserArticles($userId);
 
