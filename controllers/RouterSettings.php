@@ -59,6 +59,11 @@ class RouterSettings {
             self::KEY_CONTROLLER => RecenzentClankyController::class,
             self::KEY_LOGIN_REQUIRED => true,
             self::KEY_RESTRICTED_USERS => [UserRolesModel::ROLE_AUTHOR, UserRolesModel::ROLE_ADMIN, UserRolesModel::ROLE_SUPER]
+        ),
+        "sprava-clanku" => array(
+            self::KEY_CONTROLLER => SpravaClankuController::class,
+            self::KEY_LOGIN_REQUIRED => true,
+            self::KEY_RESTRICTED_USERS => [UserRolesModel::ROLE_AUTHOR, UserRolesModel::ROLE_REVIEWER]
         )
     );
 }

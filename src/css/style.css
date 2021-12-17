@@ -162,9 +162,12 @@ form.login-form, form.register-form {
     border-radius: 10px;
 }
 
-table.user-management-table {
+table.user-management-table, table.article-management-table {
     width: 100%;
     background-color: hsl(0, 0%, 90%);
+}
+
+table.user-management-table {
     box-shadow: 0 0 3px black;
 }
 
@@ -173,11 +176,27 @@ table.user-management-table thead {
     color:hsl(0, 0%, 100%);
 }
 
-table.user-management-table tr:nth-child(even) {
+table.article-management-table thead {
+    background-color: hsl(0, 0%, 50%);
+}
+
+table.user-management-table tr:nth-child(even), table.article-management-table tr:nth-child(even) {
     background-color: hsl(0, 0%, 80%);
 }
 
-table.user-management-table tr td, table.user-management-table thead th {
+table.user-management-table thead th {
+    padding: 0.25rem;
+    border: 1px solid hsl(300, 100%, 20%);
+    white-space: nowrap;
+}
+
+table.article-management-table thead th {
+    padding: 0.25rem;
+    border: 1px solid hsl(0, 0%, 20%);
+    white-space: nowrap;
+}
+
+table.user-management-table tr td, table.article-management-table tr td {
     padding: 0.25rem;
     border: 1px solid hsl(0, 0%, 40%);
     white-space: nowrap;
@@ -276,6 +295,14 @@ div.article {
     border-radius: 6px 6px 0 0;
 }
 
+.article-header.article-accepted {
+    background-color: hsl(100, 100%, 30%);
+}
+
+.article-header.article-dismissed {
+    background-color: hsl(0, 100%, 40%);
+}
+
 .article-content {
     padding: 0.5rem;
     margin: 0;
@@ -292,11 +319,91 @@ div.article {
     margin-right: 0.25rem;
 }
 
+.article-admin-area {
+    padding: 1rem;
+}
+
 .article-controls {
     background-color: hsl(0, 0%, 80%);
     border-radius: 0 0 6px 6px;
 }
 
+.article-controls :first-child {
+    border-bottom-left-radius: 6px;
+}
+
+.article-controls form :first-child {
+    border-bottom-left-radius: 6px;
+}
+
 i.review-edit-success, i.review-edit-failed {
     font-size: 3rem;
+}
+
+button.add-reviewer {
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    background-color: hsl(100, 100%, 30%);
+    color: white;
+    transition: 300ms;
+}
+
+button.add-reviewer:hover {
+    background-color: hsl(100, 100%, 25%);
+    transition: 300ms;
+}
+
+button.remove-review {
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    border: 1px solid hsl(0, 100%, 30%);
+    color: hsl(0, 100%, 30%);
+    background-color: inherit;
+    transition: 300ms;
+}
+
+button.remove-review:hover {
+    background-color: hsl(0, 100%, 25%);
+    color: white;
+    transition: 300ms;
+}
+
+button.accept-article {
+    border: none;
+    padding: 0.25rem 0.5rem;
+    background-color: hsl(100, 100%, 30%);
+    color: white;
+    transition: 300ms;
+}
+
+button.accept-article:hover {
+    background-color: hsl(100, 100%, 20%);
+    transition: 300ms;
+}
+
+button.dismiss-article {
+    border: none;
+    padding: 0.25rem 0.5rem;
+    background-color: hsl(0, 100%, 40%);
+    color: white;
+    transition: 300ms;
+}
+
+button.dismiss-article:hover {
+    background-color: hsl(0, 100%, 30%);
+    transition: 300ms;
+}
+
+button.reevaluate-article {
+    border: none;
+    padding: 0.25rem 0.5rem;
+    background-color: hsl(0, 0%, 50%);
+    transition: 300ms;
+}
+
+button.reevaluate-article:hover {
+    background-color: hsl(0, 0%, 30%);
+    transition: 300ms;
 }

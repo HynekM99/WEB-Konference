@@ -40,6 +40,12 @@ class Db {
         return $data[$key];
     }
 
+    public static function requestLastInsertId() {
+        $data = self::$connection->prepare("SELECT LAST_INSERT_ID();");
+        $data->execute();
+        return $data->fetch()[0];
+    }
+
     public static function request($request, $parameters = array()) {
         $data = self::$connection->prepare($request);
         $data->execute($parameters);
