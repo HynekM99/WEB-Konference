@@ -11,6 +11,9 @@
             </div>
             <p class="article-content"><?=$article['abstract']?></p>
             <em class="article-timestamp"><?=$article['timestamp']?></em>
+            <div class="article-controls">
+                <a class="button download-article" href="<?=$article['pdf_path']?>"><i class="fa fa-download"></i> PDF</a>
+            </div>
         </div>
     <?php endforeach ?>
 <?php endif ?>

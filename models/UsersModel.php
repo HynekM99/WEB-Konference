@@ -43,6 +43,21 @@ class UsersModel {
         ");
     }
 
+    public function getAuthors() {
+        return Db::requestAll("
+            SELECT * FROM users
+            WHERE users.id_user_rights = ?
+        ", array(UserRolesModel::ROLE_AUTHOR));
+    }
+
+    public function getOtherAuthors($loggedAuthorId) {
+        return Db::requestAll("
+            SELECT * FROM users
+            WHERE users.id_user_rights = ?
+            AND users.id <> ?
+        ", array(UserRolesModel::ROLE_AUTHOR, $loggedAuthorId));
+    }
+
     public function getReviewers() {
         return Db::requestAll("
             SELECT * FROM users

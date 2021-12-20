@@ -224,7 +224,6 @@ a.button.new-article:hover {
 }
 
 a.button.edit-article {
-    border-radius: 0 0 0 6px;
     color: hsl(0, 0%, 100%);
     background-color: hsl(200, 100%, 30%);
 }
@@ -234,7 +233,6 @@ a.button.edit-article:hover {
 }
 
 a.button.open-review {
-    border-radius: 0 0 0 6px;
     color: hsl(0, 0%, 100%);
     background-color: hsl(200, 100%, 30%);
 }
@@ -250,6 +248,16 @@ a.button.download-article {
 
 a.button.download-article:hover {
     background-color: hsl(160, 100%, 25%);
+}
+
+a.button.delete-article {
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(0, 100%, 40%);
+    border-radius: 0 0 6px 0;
+}
+
+a.button.delete-article:hover {
+    background-color: hsl(0, 100%, 30%);
 }
 
 .user-enabled, .user-disabled {
@@ -328,11 +336,7 @@ div.article {
     border-radius: 0 0 6px 6px;
 }
 
-.article-controls :first-child {
-    border-bottom-left-radius: 6px;
-}
-
-.article-controls form :first-child {
+.article-controls :first-child, .article-controls form :first-child {
     border-bottom-left-radius: 6px;
 }
 
@@ -340,7 +344,7 @@ i.review-edit-success, i.review-edit-failed {
     font-size: 3rem;
 }
 
-button.add-reviewer {
+button.add-reviewer, button.add-author {
     border: none;
     padding: 0.25rem 0.5rem;
     border-radius: 6px;
@@ -349,13 +353,12 @@ button.add-reviewer {
     transition: 300ms;
 }
 
-button.add-reviewer:hover {
+button.add-reviewer:hover, button.add-author:hover {
     background-color: hsl(100, 100%, 25%);
     transition: 300ms;
 }
 
-button.remove-review {
-    border: none;
+button.remove-review, i.remove-author {
     padding: 0.25rem 0.5rem;
     border-radius: 6px;
     border: 1px solid hsl(0, 100%, 30%);
@@ -364,10 +367,18 @@ button.remove-review {
     transition: 300ms;
 }
 
-button.remove-review:hover {
+i.remove-author {
+    border: none
+}
+
+button.remove-review:hover, i.remove-author:hover {
     background-color: hsl(0, 100%, 25%);
     color: white;
     transition: 300ms;
+}
+
+i.remove-author:hover {
+    cursor: pointer;
 }
 
 button.accept-article {

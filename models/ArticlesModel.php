@@ -63,4 +63,43 @@ class ArticlesModel {
             ", array($article_id));
         }
     }
+
+    public function updatePdfPath($article_id, $new_path) {
+        Db::request("
+            UPDATE articles 
+            SET pdf_path = ? 
+            WHERE id = ?
+        ", array($new_path, $article_id));
+    }
+
+    public function insertArticle($author_ids, $title, $abstract, $pdf_path) {
+        Db::request("
+            INSERT INTO articles 
+            (name, abstract, pdf_path)
+            VALUES
+            (?, ?, ?)
+        ", array($title, $abstract, $pdf_path));
+
+        $article_id = Db::requestLastInsertId();
+
+        $this->updatePdfPath($article_id, "files/".$article_id.".pdf");
+
+        foreach ($author_ids as $id_author) {
+            Db::request("
+                INSERT INTO articles_authors
+                (id_author, id_article)
+                VALUES
+                (?, ?)
+            ", array(intval($id_author), $article_id));
+        }
+
+        return $article_id;
+    }
+
+    public function deleteArticle(int $article_id) {
+        Db::request("
+            DELETE FROM articles
+            WHERE id = ?
+        ", array($article_id));
+    }
 }

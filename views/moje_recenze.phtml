@@ -34,7 +34,7 @@
                 <?php if (!$is_banned) : ?>
                     <div class="d-flex article-controls">
                         <a class="button open-review unfinished" id="<?=$review['article']['id']?>"><i class="fa fa-star-o open-review unfinished" id=<?=$review['article']['id']?>></i> Ohodnotit</a>
-                        <a class="button download-article" href="<?=$review['article']['pdf_path']?>"><i class="fa fa-download"></i> Stáhnout</a>
+                        <a class="button download-article" href="<?=$review['article']['pdf_path']?>"><i class="fa fa-download"></i> PDF</a>
                     </div>
                 <?php endif ?>
             </div>
@@ -78,7 +78,7 @@
                 <?php if (!$is_banned) : ?>
                     <div class="d-flex article-controls">
                         <a class="button open-review finished" id="<?=$review['article']['id']?>"><i class="fa fa-star-o open-review finished" id=<?=$review['article']['id']?>></i> Ohodnotit</a>
-                        <a class="button download-article" href="<?=$review['article']['pdf_path']?>"><i class="fa fa-download"></i> Stáhnout</a>
+                        <a class="button download-article" href="<?=$review['article']['pdf_path']?>"><i class="fa fa-download"></i> PDF</a>
                     </div>
                 <?php endif ?>
             </div>

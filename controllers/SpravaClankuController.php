@@ -3,6 +3,7 @@ namespace app\controllers;
 
 use app\models\ArticlesModel;
 use app\models\ReviewsModel;
+use app\models\UserRolesModel;
 use app\models\UsersModel;
 use app\utils\Login;
 
@@ -27,22 +28,26 @@ class SpravaClankuController extends Controller {
     private function process_data() {
         $userId = Login::getUserID();
         $loggedUser = $this->usersModel->getUserByID($userId);
-        $this->data['user_id'] = $userId;
-        $this->data['is_banned'] = $loggedUser['banned'];
+        $is_banned = $loggedUser['banned'];
 
-        if (isset($_POST['accept-article'])) {
+        $this->data['user_id'] = $userId;
+        $this->data['is_super'] = $loggedUser['id_user_rights'] == UserRolesModel::ROLE_SUPER;
+        $this->data['is_banned'] = $is_banned;
+
+        if (!$is_banned && isset($_POST['accept-article'])) {
             $articleId = $_POST['accept-article'];
             $this->articlesModel->updateArticleStatus($articleId, true);
-        } else if (isset($_POST['dismiss-article'])) {
+        }
+        else if (isset($_POST['dismiss-article'])) {
             $articleId = $_POST['dismiss-article'];
             $this->articlesModel->updateArticleStatus($articleId, false);
-        } else if (isset($_POST['reevaluate-article'])) {
+        }
+        else if (isset($_POST['reevaluate-article'])) {
             $articleId = $_POST['reevaluate-article'];
             $this->articlesModel->updateArticleStatus($articleId);
         }
 
         $allReviewers = $this->usersModel->getReviewers();
-
         $undecidedArticles = $this->articlesModel->getUndecidedArticles();
         $decidedArticles = $this->articlesModel->getDecidedArticles();
 

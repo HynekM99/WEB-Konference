@@ -4,7 +4,7 @@
     <?php else : ?>
         <h3 class="d-flex justify-content-center">Neposouzené články</h3>
         <?php foreach ($undecided_articles as $article) : ?>
-            <div class="article">
+            <div id="article-<?=$article['id']?>" class="article">
                 <div class="article-header">
                     <em><?=$article['authors']?></em>
                     <h4><?=$article['name']?></h4>
@@ -50,12 +50,19 @@
                         <?php endif ?>
                         </table>
                     </div>
-                    <div class="d-flex article-controls">
-                        <form id="article-verdict-<?=$article['id']?>" class="d-flex article-verdict <?php if (!$article['required_reviews']) echo "d-none"; ?>" method="post">
-                            <button type="submit" name="accept-article" value=<?=$article['id']?> class="accept-article"><i class="fa fa-check-circle-o accept-article"></i> Schválit</button>
-                            <button type="submit" name="dismiss-article" value=<?=$article['id']?> class="dismiss-article"><i class="fa fa-times-circle-o dismiss-article"></i> Zamítnout</button>
-                        </form>
-                        <a class="button download-article" href="<?=$article['pdf_path']?>"><i class="fa fa-download"></i> Stáhnout</a>
+                    <div class="d-flex justify-content-between article-controls">
+                        <div class="d-flex">
+                            <form id="article-verdict-<?=$article['id']?>" class="d-flex article-verdict <?php if (!$article['required_reviews']) echo "d-none"; ?>" method="post">
+                                <button type="submit" name="accept-article" value=<?=$article['id']?> class="accept-article"><i class="fa fa-check-circle-o accept-article"></i> Schválit</button>
+                                <button type="submit" name="dismiss-article" value=<?=$article['id']?> class="dismiss-article"><i class="fa fa-times-circle-o dismiss-article"></i> Zamítnout</button>
+                            </form>
+                            <a class="button download-article text-center" href="<?=$article['pdf_path']?>"><i class="fa fa-download"></i> PDF</a>
+                        </div>
+                        <?php if ($is_super) : ?>
+                            <div>
+                                <a id=<?=$article['id']?> class="button delete-article"><i id=<?=$article['id']?> class="fa fa-trash delete-article"></i></a>
+                            </div>
+                        <?php endif ?>
                     </div>
                 <?php endif ?>
             </div>
@@ -67,7 +74,7 @@
     <?php else : ?>
         <h3 class="d-flex justify-content-center border-top border-dark mt-4">Články k opětovnému posouzení</h3>
         <?php foreach ($decided_articles as $article) : ?>
-            <div class="article">
+            <div id="article-<?=$article['id']?>" class="article">
                 <div class="article-header <?php echo $article['published'] ? "article-accepted": "article-dismissed"; ?>">
                     <em><?=$article['authors']?></em>
                     <h4><i class="fa <?php echo $article['published'] ? "fa-check-circle-o": "fa-times-circle-o"; ?>"></i> <?=$article['name']?></h4>
@@ -97,11 +104,18 @@
                         <?php endif ?>
                         </table>
                     </div>
-                    <div class="d-flex article-controls">
-                        <form class="d-flex article-verdict" method="post">
-                            <button type="submit" name="reevaluate-article" value=<?=$article['id']?> class="reevaluate-article"><i class="fa fa-undo reevaluate-article"></i> Znovu posoudit</button>
-                        </form>
-                        <a class="button download-article" href="<?=$article['pdf_path']?>"><i class="fa fa-download"></i> Stáhnout</a>
+                    <div class="d-flex justify-content-between article-controls">
+                        <div class="d-flex">
+                            <form class="d-flex article-verdict" method="post">
+                                <button type="submit" name="reevaluate-article" value=<?=$article['id']?> class="reevaluate-article"><i class="fa fa-undo reevaluate-article"></i> Znovu posoudit</button>
+                            </form>
+                            <a class="button download-article text-center" href="<?=$article['pdf_path']?>"><i class="fa fa-download"></i> PDF</a>
+                        </div>
+                        <?php if ($is_super) : ?>
+                            <div>
+                                <a id=<?=$article['id']?> class="button delete-article"><i id=<?=$article['id']?> class="fa fa-trash delete-article"></i></a>
+                            </div>
+                        <?php endif ?>
                     </div>
                 <?php endif ?>
             </div>
@@ -143,7 +157,7 @@
 
                         let reviewerTable = document.querySelector("table.article-management-table#article-table-"+target.id+" tbody");
                         let newReviewerHtml = '<tr id="review-'+result+'"> <td><div class="d-flex justify-content-center"><button id='+result+' class="remove-review"><i id='+result+' class="fa fa-times-circle remove-review"></i></button></div></td> <td>'+newReviewerName+'</td> <td></td> <td></td> <td></td> <td></td> </tr>'
-                        reviewerTable.innerHTML += newReviewerHtml;
+                        reviewerTable.insertAdjacentHTML("beforeend", newReviewerHtml);
                     }
                 }
             })
@@ -177,6 +191,21 @@
                             let articleVerdictForm = document.querySelector("form#article-verdict-"+result['id_article']);
                             articleVerdictForm.remove();
                         }
+                    }
+                }
+            })
+        }
+
+        if (target.classList.contains("delete-article")) {
+            $.ajax({
+                url: "ajax/delete_article.php",
+                data: {
+                    user_id: <?=$user_id?>,
+                    article_id: target.id
+                },
+                success: function(result) {
+                    if (!result) {
+                        document.querySelector(".article#article-"+target.id).remove();
                     }
                 }
             })
