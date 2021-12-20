@@ -4,23 +4,29 @@ namespace app\utils;
 use \PDO;
 
 class Db {
+    public const DB_IP_ADDRESS = "127.0.0.1";
+    public const DB_USER = "root";
+    public const DB_PASSWORD = "";
+    public const DB_NAME = "db_conference";
+
     private static $connection;
 
     private static $settings = array(
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
-        PDO::ATTR_EMULATE_PREPARES => false
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     );
 
-    public static function connect($host, $uzivatel, $heslo, $databaze) {
-        if (!isset(self::$connection)) {
-            self::$connection = new PDO(
-                "mysql:host=$host;dbname=$databaze",
-                $uzivatel,
-                $heslo,
-                self::$settings
-            );
-        }
+    public static function connect(
+        $host = self::DB_IP_ADDRESS, 
+        $user = self::DB_USER, 
+        $password = self::DB_PASSWORD, 
+        $database = self::DB_NAME
+        ) {
+        self::$connection = new PDO(
+            "mysql:host=$host;dbname=$database",
+            $user,
+            $password,
+            self::$settings
+        );
     }
 
     public static function requestRow($request, $parameters = array()) {

@@ -15,12 +15,7 @@ require_once("../utils/Db.php");
 $requiredVars = ["user_id", "article_id", "content_score", "relevance_score", "language_score", "comment"];
 if (!VariableChecker::requestVarsSet($requiredVars)) return;
 
-const DB_IP_ADDRESS = "127.0.0.1";
-const DB_USER = "root";
-const DB_PASSWORD = "";
-const DB_NAME = "db_conference";
-
-Db::connect(DB_IP_ADDRESS, DB_USER, DB_PASSWORD, DB_NAME);
+Db::connect();
 
 $usersModel = new UsersModel();
 $reviewsModel = new ReviewsModel();
