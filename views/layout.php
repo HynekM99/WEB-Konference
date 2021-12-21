@@ -16,6 +16,19 @@
 </head>
 
 <body>
+    <div class="wrapper main">
+        <div class="container banner p-0">
+            <div class="banner-image">
+                <img src="/src/img/tire_banner.png" alt="">
+            </div>
+            <div class="d-flex justify-content-center banner-title">
+                <div class="text-center m-3">
+                    <a href="uvod">Konference Pneumatiky</a><br>
+                    <span>Revoluce ve výrobě pneumatik...</span>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="wrapper navigation">
         <nav class="container navbar navbar-expand-sm navbar-toggleable-sm p-0">
             <button 

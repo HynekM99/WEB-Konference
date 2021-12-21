@@ -11,6 +11,7 @@
             <?php foreach ($users as $user) : ?>
                 <tr>
                     <td>
+                    <?php if (!$is_banned) : ?>
                         <div class="user-state d-flex justify-content-center" id=<?=$user['id']?>>
                             <?php if ($user['weight'] < $logged_weight) : ?>
                                 <?php if ($user['banned']) : ?>
@@ -24,10 +25,13 @@
                                 <?php endif ?>
                             <?php endif ?>
                         </div>
+                    <?php endif ?>
                     </td>
+
                     <td><?=$user['full_name']?></td>
                     <td><?=$user['username']?></td>
                     <td>
+                    <?php if (!$is_banned) : ?>
                         <?php if ($user['weight'] < $logged_weight) : ?>
                             <select name="role">
                                 <?php if ($is_super) : ?>
@@ -40,6 +44,7 @@
                         <?php else : ?>
                             <?=$user['name']?>
                         <?php endif ?>
+                    <?php endif ?>
                     </td>
                 </tr>
             <?php endforeach ?>
@@ -58,6 +63,7 @@
             $.ajax({
                 url: "ajax/uzivatel_edit.php",
                 data: {
+                    admin_id: <?=$user_id?>,
                     id: target.id,
                     toggle_ban: true
                 },
@@ -71,6 +77,7 @@
             $.ajax({
                 url: "ajax/uzivatel_edit.php",
                 data: {
+                    admin_id: <?=$user_id?>,
                     id: target.id,
                     new_role: target.value
                 }

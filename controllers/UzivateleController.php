@@ -23,8 +23,10 @@ class UzivateleController extends Controller {
         $users = $this->usersModel->getUsers();
         $logged_user = $this->usersModel->getUserByID(Login::getUserID());
 
+        $this->data['user_id'] = $logged_user['id'];
         $this->data['users'] = $users;
         $this->data['logged_weight'] = $logged_user['weight'];
+        $this->data['is_banned'] = $logged_user['banned'];
         $this->data['is_super'] = $logged_user['id_role'] == UserRolesModel::ROLE_SUPER;
     }
 }
