@@ -9,7 +9,7 @@ abstract class Controller
 
     public function return_view() {
         extract($this->xss_fix($this->data));
-        require("views/".$this->view.".phtml");
+        require("views/".$this->view.".php");
     }
 
     public function redirect($url) {

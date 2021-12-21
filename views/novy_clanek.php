@@ -14,7 +14,7 @@
                 <button class="add-author"><i class="fa fa-plus add-author"></i></button>
             </div>
         <?php endif ?>
-        <form class="new-article-form" method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
             <div class="new-authors overflow-auto">
                 <table class="extra-authors">
 

@@ -9,7 +9,7 @@
                     <em><?=$article['authors']?></em>
                     <h4><?=$article['name']?></h4>
                 </div>
-                <p class="article-content"><?=$article['abstract']?></p>
+                <p class="article-content"><?=nl2br($article['abstract'])?></p>
                 <em class="article-timestamp"><?=$article['timestamp']?></em>
 
                 <?php if (!$is_banned) : ?>
@@ -32,7 +32,8 @@
                                 <th>Relevance</th>
                                 <th>Jazyk</th>
                             </thead>
-                        <?php if (isset($article['reviews']) && count($article['reviews']) > 0) : ?>
+                            <tbody>
+                            <?php if (isset($article['reviews']) && count($article['reviews']) > 0) : ?>
                             <?php foreach ($article['reviews'] as $review) : ?>
                                 <tr id="review-<?=$review['id_review']?>">
                                     <td>
@@ -47,7 +48,8 @@
                                     <td><?php if (isset($review['language_score'])) echo scoreInStars($review['language_score']);?></td>
                                 </tr>
                             <?php endforeach ?>
-                        <?php endif ?>
+                            <?php endif ?>
+                            </tbody>
                         </table>
                     </div>
                     <div class="d-flex justify-content-between article-controls">
@@ -70,16 +72,16 @@
     <?php endif ?>
 
     <?php if (!isset($decided_articles) || count($decided_articles) <= 0) : ?>
-        <h3 class="d-flex justify-content-center border-top border-dark mt-4">Žádné články k opětovnému posouzení</h3>
+        <h3 class="d-flex justify-content-center border-top border-dark mt-4 pt-3">Žádné články k opětovnému posouzení</h3>
     <?php else : ?>
-        <h3 class="d-flex justify-content-center border-top border-dark mt-4">Články k opětovnému posouzení</h3>
+        <h3 class="d-flex justify-content-center border-top border-dark mt-4 pt-3">Články k opětovnému posouzení</h3>
         <?php foreach ($decided_articles as $article) : ?>
             <div id="article-<?=$article['id']?>" class="article">
                 <div class="article-header <?php echo $article['published'] ? "article-accepted": "article-dismissed"; ?>">
                     <em><?=$article['authors']?></em>
                     <h4><i class="fa <?php echo $article['published'] ? "fa-check-circle-o": "fa-times-circle-o"; ?>"></i> <?=$article['name']?></h4>
                 </div>
-                <p class="article-content"><?=$article['abstract']?></p>
+                <p class="article-content"><?=nl2br($article['abstract'])?></p>
                 <em class="article-timestamp"><?=$article['timestamp']?></em>
                 <?php if (!$is_banned) : ?>
                     <div class="article-admin-area overflow-auto">
@@ -91,7 +93,8 @@
                                 <th>Relevance</th>
                                 <th>Jazyk</th>
                             </thead>
-                        <?php if (isset($article['reviews']) && count($article['reviews']) > 0) : ?>
+                            <tbody>
+                            <?php if (isset($article['reviews']) && count($article['reviews']) > 0) : ?>
                             <?php foreach ($article['reviews'] as $review) : ?>
                                 <tr id="review-<?=$review['id_review']?>">
                                     <td><?=$review['full_name']?></td>
@@ -101,7 +104,8 @@
                                     <td><?php if (isset($review['language_score'])) echo scoreInStars($review['language_score']);?></td>
                                 </tr>
                             <?php endforeach ?>
-                        <?php endif ?>
+                            <?php endif ?>
+                            </tbody>
                         </table>
                     </div>
                     <div class="d-flex justify-content-between article-controls">

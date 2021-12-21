@@ -12,17 +12,19 @@
                     <em><?=$article['authors']?></em>
                     <h4><i class="fa <?php if ($article['published'] !== null) echo $article['published'] ? "fa-check-circle-o": "fa-times-circle-o"; ?>"></i> <?=$article['name']?></h4>
                 </div>
-                <p class="article-content"><?=$article['abstract']?></p>
+                <p class="article-content"><?=nl2br($article['abstract'])?></p>
                 <em class="article-timestamp"><?=$article['timestamp']?></em>
                 <div class="d-flex justify-content-between article-controls">
                     <div class="d-flex">
-                        <?php if ($article['published'] === null) : ?>
+                        <?php if (!$is_banned && $article['published'] === null) : ?>
                             <a class="button edit-article" href="moje-clanky/upravit?id=<?=$article['id']?>"><i class="fa fa-pencil"></i> Upravit</a><br>
                         <?php endif ?>
-                        <a class="button download-article text-center" href="<?=$article['pdf_path']?>"><i class="fa fa-download"></i> Stahnout</a>
+                        <a class="button download-article text-center" href="<?=$article['pdf_path']?>"><i class="fa fa-download"></i> PDF</a>
                     </div>
                     <div>
-                        <a id=<?=$article['id']?> class="button delete-article"><i id=<?=$article['id']?> class="fa fa-trash delete-article"></i></a>
+                        <?php if (!$is_banned) : ?>
+                            <a id=<?=$article['id']?> class="button delete-article"><i id=<?=$article['id']?> class="fa fa-trash delete-article"></i></a>
+                        <?php endif ?>
                     </div>
                 </div>
             </div>

@@ -55,6 +55,11 @@ class RouterSettings {
             self::KEY_LOGIN_REQUIRED => true,
             self::KEY_RESTRICTED_USERS => [UserRolesModel::ROLE_REVIEWER, UserRolesModel::ROLE_ADMIN, UserRolesModel::ROLE_SUPER]
         ),
+        "moje-clanky/upravit" => array(
+            self::KEY_CONTROLLER => UpravaClanekController::class,
+            self::KEY_LOGIN_REQUIRED => true,
+            self::KEY_RESTRICTED_USERS => [UserRolesModel::ROLE_REVIEWER, UserRolesModel::ROLE_ADMIN, UserRolesModel::ROLE_SUPER]
+        ),
         "moje-recenze" => array(
             self::KEY_CONTROLLER => RecenzentClankyController::class,
             self::KEY_LOGIN_REQUIRED => true,

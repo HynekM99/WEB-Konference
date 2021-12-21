@@ -410,11 +410,12 @@ button.dismiss-article:hover {
 button.reevaluate-article {
     border: none;
     padding: 0.25rem 0.5rem;
-    background-color: hsl(0, 0%, 50%);
+    background-color: hsl(300, 80%, 30%);
+    color: white;
     transition: 300ms;
 }
 
 button.reevaluate-article:hover {
-    background-color: hsl(0, 0%, 30%);
+    background-color: hsl(300, 80%, 20%);
     transition: 300ms;
 }

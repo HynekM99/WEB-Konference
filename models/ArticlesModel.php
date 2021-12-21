@@ -64,7 +64,15 @@ class ArticlesModel {
         }
     }
 
-    public function updatePdfPath($article_id, $new_path) {
+    public function updateArticle(int $article_id, string $title, string $abstract) {
+        Db::request("
+            UPDATE articles 
+            SET name = ?, abstract = ?
+            WHERE id = ?
+        ", array($title, $abstract, $article_id));
+    }
+
+    public function updatePdfPath(int $article_id, string $new_path) {
         Db::request("
             UPDATE articles 
             SET pdf_path = ? 
@@ -72,7 +80,7 @@ class ArticlesModel {
         ", array($new_path, $article_id));
     }
 
-    public function insertArticle($author_ids, $title, $abstract, $pdf_path) {
+    public function insertArticle($author_ids, string $title, string $abstract, string $pdf_path) {
         Db::request("
             INSERT INTO articles 
             (name, abstract, pdf_path)
@@ -101,5 +109,13 @@ class ArticlesModel {
             DELETE FROM articles
             WHERE id = ?
         ", array($article_id));
+    }
+
+    public function removeArticlesAuthor(int $article_id, int $author_id) {
+        Db::request("
+            DELETE FROM articles_authors
+            WHERE id_article = ?
+            AND id_author = ?
+        ", array($article_id, $author_id));
     }
 }

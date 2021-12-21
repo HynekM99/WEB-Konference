@@ -14,19 +14,21 @@ class NovyClanekController extends Controller {
         $this->usersModel = new UsersModel();
         $this->articlesModel = new ArticlesModel();
 
+        $userId = Login::getUserID();
+        $loggedUser = $this->usersModel->getUserByID($userId);
+        if ($loggedUser['banned']) return;
+
         $this->header['title'] = 'Nový článek';
         $this->header['keywords'] = 'nový, přidat, články, příspěvky, konference';
         $this->header['description'] = 'Přidání článku';
         
         $this->view = 'novy_clanek';
 
-        $this->proccessData();
+        $this->proccessData($loggedUser);
     }
 
-    private function proccessData() {
-        $userId = Login::getUserID();
-        $loggedUser = $this->usersModel->getUserByID($userId);
-        if ($loggedUser['banned']) return;
+    private function proccessData($loggedUser) {
+        $userId = $loggedUser['id'];
         
         if (VariableChecker::postVarsSet(['submit', 'title', 'abstract'])) {
             $authors = [$userId];
@@ -42,7 +44,6 @@ class NovyClanekController extends Controller {
             if ($file['error'] == UPLOAD_ERR_OK && $file['type'] == 'application/pdf') {
                 $article_id = $this->articlesModel->insertArticle($authors, $title, $abstract, "to_be_changed.pdf");
                 move_uploaded_file($file['tmp_name'], 'files/'.$article_id.".pdf");
-                $this->data['success'] = true;
             }
         }
 

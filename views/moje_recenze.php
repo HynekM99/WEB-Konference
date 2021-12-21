@@ -9,7 +9,7 @@
                     <em><?=$review['article']['authors']?></em>
                     <h4><?=$review['article']['name']?></h4>
                 </div>
-                <p class="article-content"><?=$review['article']['abstract']?></p>
+                <p class="article-content"><?=nl2br($review['article']['abstract'])?></p>
                 <em class="article-timestamp"><?=$review['article']['timestamp']?></em>
                 <form method="post">
                     <input type="number" name="article_id" value=<?=$review['article']['id']?> hidden>
@@ -51,7 +51,7 @@
                     <em><?=$review['article']['authors']?></em>
                     <h4><?=$review['article']['name']?></h4>
                 </div>
-                <p class="article-content"><?=$review['article']['abstract']?></p>
+                <p class="article-content"><?=nl2br($review['article']['abstract'])?></p>
                 <em class="article-timestamp"><?=$review['article']['timestamp']?></em>
                 <div class="row justify-content-center review-area d-none" id="finished-review-<?=$review['article']['id']?>">
                     <input type="number" id="article-id-finished-review-<?=$review['article']['id']?>" value=<?=$review['article']['id']?> hidden>

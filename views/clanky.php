@@ -9,7 +9,7 @@
                 <em><?=$article['authors']?></em>
                 <h4><?=$article['name']?></h4>
             </div>
-            <p class="article-content"><?=$article['abstract']?></p>
+            <p class="article-content"><?=nl2br($article['abstract'])?></p>
             <em class="article-timestamp"><?=$article['timestamp']?></em>
             <div class="article-controls">
                 <a class="button download-article" href="<?=$article['pdf_path']?>"><i class="fa fa-download"></i> PDF</a>

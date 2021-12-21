@@ -106,7 +106,7 @@ class SpravaClankuController extends Controller {
         $required = 3;
         
         foreach ($reviews as $review) {
-            if ($review['overall_score']) $required--;
+            if ($review['overall_score'] > -1 && $review['overall_score'] < 11) $required--;
             if ($required == 0) return true;
         }
         return false;
