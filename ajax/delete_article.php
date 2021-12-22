@@ -28,5 +28,9 @@ $canRemove = !$loggedUser['banned'] && in_array($loggedUser['id_user_rights'], $
 if ($canRemove) {
     $articleId = $_REQUEST['article_id'];
     $articlesModel->deleteArticle($articleId);
-    echo $articlesModel->getArticle($articleId);
+    $article = $articlesModel->getArticle($articleId);
+    if (!$article) {
+        unlink('../files/'.$articleId.'.pdf');
+    }
+    echo $article;
 }
