@@ -1,6 +1,18 @@
 <?php
-namespace app\controllers;
+namespace app\settings;
 
+use app\controllers\AutorClankyController;
+use app\controllers\ClankyController;
+use app\controllers\ErrorController;
+use app\controllers\LoginController;
+use app\controllers\LogoutController;
+use app\controllers\NovyClanekController;
+use app\controllers\RecenzentClankyController;
+use app\controllers\RegistraceController;
+use app\controllers\SpravaClankuController;
+use app\controllers\UpravaClanekController;
+use app\controllers\UvodController;
+use app\controllers\UzivateleController;
 use app\models\UserRolesModel;
 
 class RouterSettings {

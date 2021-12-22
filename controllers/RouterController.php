@@ -3,6 +3,7 @@ namespace app\controllers;
 
 use app\models\UserRolesModel;
 use app\models\UsersModel;
+use app\settings\RouterSettings;
 use app\utils\Login;
 
 class RouterController extends Controller {
@@ -15,7 +16,7 @@ class RouterController extends Controller {
 
         $page = $this->findPage($parameters[0]);
         $controllerClass = RouterSettings::PAGES[$page][RouterSettings::KEY_CONTROLLER];
-
+        
         $this->controller = new $controllerClass();
 
         $this->data['title'] = $this->controller->header['title'];
