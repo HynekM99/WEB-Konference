@@ -14,9 +14,10 @@ class ReviewsModel {
     public function getUnfinishedReviews(int $reviewer_id) {
         return Db::requestAll("
             SELECT * FROM reviews
-            WHERE (id_reviewer = ?)
-            AND (overall_score IS NULL
-            OR comment IS NULL)
+            INNER JOIN articles ON reviews.id_article = articles.id
+            WHERE reviews.id_reviewer = ?
+            AND reviews.overall_score IS NULL
+            AND articles.published IS NULL
         ", array($reviewer_id));
     }
 
@@ -26,7 +27,6 @@ class ReviewsModel {
             INNER JOIN articles ON reviews.id_article = articles.id
             WHERE reviews.id_reviewer = ?
             AND reviews.overall_score IS NOT NULL
-            AND reviews.comment IS NOT NULL
             AND articles.published IS NULL
         ", array($reviewer_id));
     }

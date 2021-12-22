@@ -24,3 +24,6 @@
     </div>
     <?php endif ?>
 </div>
+<script>
+    document.getElementById("navbar-collapsed-text").innerText = "Úprava článku";
+</script>
